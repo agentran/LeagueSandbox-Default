@@ -32,11 +32,15 @@ namespace Spells
             var units = GetUnitsInRange(owner, 450, true);
             foreach (IAttackableUnit unit in units)
             {
-                if(owner as IAttackableUnit != unit)
+                if(owner as IAttackableUnit != unit && unit.Team != owner.Team)
                 {
                     ApplyEffects(owner, unit, spell, null);
                 }
             }
+            owner.AddBuffGameScript("RengarWBuff", "RengarWBuff", spell);
+            
+
+
         }
 
         public void ApplyEffects(IChampion owner, IAttackableUnit target, ISpell spell, IProjectile projectile)

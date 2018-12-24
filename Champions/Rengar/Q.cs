@@ -13,7 +13,7 @@ namespace Spells
         float OriginalAS;
         public void OnActivate(IChampion owner)
         {
-            
+
 
 
         }
@@ -24,15 +24,13 @@ namespace Spells
 
         public void OnStartCasting(IChampion owner, ISpell spell, IAttackableUnit target)
         {
-
             AddParticleTarget(owner, "Rengar_Base_Q_Buf_Claw.troy", owner, 1, "L_HAND");
             AddParticleTarget(owner, "Rengar_Base_Q_Buf_Blade.troy", owner, 1, "R_HAND");
             OriginalAS = owner.Stats.AttackSpeedFlat;
-            
             owner.Stats.AttackSpeedFlat *= 0.4f;
             if (owner.HasMadeInitialAttack)
             {
-                ApplyEffects(owner, owner.TargetUnit, spell, null);
+              spell.SpellAnimation("SPELL1", owner);
             }
 
         }
